@@ -28,7 +28,6 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {      ## Return a matrix that is the inverse of 'x'
         inv <- x$getinv()
-        inv
         if(is.na(inv[1,1])==FALSE) {
                 message("getting cached data")
                 return(inv)
@@ -37,10 +36,15 @@ cacheSolve <- function(x, ...) {      ## Return a matrix that is the inverse of 
         inv <- solve(data, ...)
         message("solving inverse and caching")
         x$setinv(inv)
-        #inv
+        inv
 }
 
 ##  test code
 # > a<- matrix(1:4, 2,2)
 # > b <- makeCacheMatrix(a)
 # > cacheSolve(b)
+#   another example:
+# > c<-matrix(rnorm(16), 4,4)
+# > d <- makeCacheMatrix(c)
+# > cacheSolve(d)
+
